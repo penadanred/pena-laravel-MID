@@ -8,36 +8,21 @@ class PortfolioController extends Controller
 {
     public function index()
     {
-        // Website data for Alcohol/Drinks theme
         $portfolio = [
-            'name' => 'Drink Haven',
-            'title' => 'Premium Alcohol & Beverages',
-            'email' => 'info@drinkhaven.com',
-            'phone' => '+639074562134',
-            'location' => 'PH, Manila',
-            'bio' => 'Discover the finest collection of wines, beers, and spirits. Curated for every occasion.',
-            'profile_image' => 'https://via.placeholder.com/300x300?text=Drink+Logo',
+            'name' => 'BREW BREW',
+            'title' => 'coffee',
+            'email' => 'PENADANRED@gmail.com',
+            'phone' => '09708469648',
+            'location' => 'Manila, APOLINIO SAMSOM',
+            'bio' => 'At Brew Haven, we serve freshly brewed coffee and pastries made with love. Our goal is to bring comfort and energy with every cup!',
+            'profile_image' => 'https://img.freepik.com/free-photo/top-view-alcohol-bottles-with-copy-space_23-2148673772.jpg',
 
-            'skills' => ['Whiskey', 'Wine', 'Cocktails', 'Craft Beer', 'Champagne'],
+            // Removed projects
+            'skills' => ['Gin', 'Taunday', 'Rum', 'Wine'],
 
-            'projects' => [
-                [
-                    'title' => 'Top 10 Whiskey Picks',
-                    'description' => 'A curated list of our most loved whiskeys this year.',
-                    'url' => '#',
-                ],
-                [
-                    'title' => 'Wine Pairing Guide',
-                    'description' => 'Find the perfect wine for every meal.',
-                    'url' => '#',
-                ],
-            ],
-
-            'experience' => [], // Not needed unless you want to show business history
-            'education' => [],  // Not needed for a product site
-            'social_links' => [
-                'facebook' => 'https://facebook.com/drinkhaven',
-                'instagram' => 'https://instagram.com/drinkhaven',
+            'testimonials' => [
+                ['quote' => 'Best coffee in town! Love the atmosphere.', 'author' => 'Maria G.'],
+                ['quote' => 'The cappuccino is always perfect, highly recommend!', 'author' => 'James L.'],
             ],
         ];
 

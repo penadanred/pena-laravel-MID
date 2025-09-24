@@ -1,59 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Drink Haven - Premium Alcohol & Beverages" />
-    <meta name="author" content="Drink Haven" />
-    <title>@yield('title', 'Drink Haven - Premium Alcohol & Beverages')</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@yield('title')</title>
 
-    <!-- CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="{{ asset('css/portfolio.css') }}" />
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
-<section class="hero-section text-center py-5">
-
+    <!-- Your custom CSS -->
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
-
 <body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" role="navigation">
-    <div class="container">
-        <a class="navbar-brand" href="{{ route('portfolio.home') }}">Drink Haven</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
 
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                <li class="nav-item"><a class="nav-link" href="#testimonial">Testimonial</a></li>
-                <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-            </ul>
+    <!-- Anchor at top -->
+    <div id="top"></div>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top custom-nav">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#top">{{ $portfolio['name'] ?? 'BREW BREW' }}</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="#top">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#testimonial">Testimonials</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
 
-
-    <!-- Main Content -->
-    <main class="pt-5 mt-5">
+    <!-- Page content -->
+    <main>
         @yield('content')
     </main>
 
-    <!-- Footer -->
-    <footer class="text-center mt-5 py-3 bg-light">
-        <div class="container">
-            <p class="mb-0">© {{ date('Y') }} Drink Haven. Built with Laravel {{ app()->version() }}</p>
-        </div>
-    </footer>
+    <!-- Bootstrap bundle (includes Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Small script: smooth-scroll with offset + close collapse on mobile + active link highlight -->
+    <script>
+    (function () {
+        const OFFSET = 80; // height of fixed nav (adjust if needed)
+        // smooth scroll + offset
+        document.querySelectorAll('.nav-link[href^="#"]').forEach(link => {
+            link.addEventListener('click', function (e) {
+                const hash = this.getAttribute('href');
+                if (!hash || hash === '#') return;
+                const target = document.querySelector(hash);
+                if (!target) return;
+
+                e.preventDefault();
+
+                const targetPos = target.getBoundingClientRect().top + window.pageYOffset - OFFSET;
+                window.scrollTo({ top: targetPos, behavior: 'smooth' });
+
+                // close mobile nav if open
+                const navbarCollapse = document.querySelector('.navbar-collapse.show');
+                if (navbarCollapse) {
+                    const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse) || new bootstrap.Collapse(navbarCollapse);
+                    bsCollapse.hide();
+                }
+            });
+        });
+
+        // add/remove .active on nav links while scrolling
+        const sections = Array.from(document.querySelectorAll('section[id]'));
+        function onScroll() {
+            const scrollPos = window.pageYOffset + OFFSET + 5;
+            let currentId = 'top';
+            for (const sec of sections) {
+                const top = sec.offsetTop;
+                if (scrollPos >= top) {
+                    currentId = sec.id;
+                }
+            }
+            document.querySelectorAll('.nav-link').forEach(a => {
+                a.classList.remove('active');
+                const href = a.getAttribute('href')?.replace('#','') || 'top';
+                if (href === currentId) a.classList.add('active');
+            });
+        }
+        window.addEventListener('scroll', onScroll, { passive: true });
+        window.addEventListener('load', onScroll);
+    })();
+    </script>
+
 </body>
-
 </html>
