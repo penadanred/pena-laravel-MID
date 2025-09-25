@@ -1,11 +1,11 @@
 @extends('layouts.portfolio')
 
-@section('title', $portfolio['name'] . ' - Coffee Shop')
+@section('title', $portfolio['name'] . ' - Gsite')
 
 @section('content')
 
 <!-- Full Background Wrapper -->
-<div style="background: url('https://img.freepik.com/free-photo/top-view-alcohol-bottles-with-copy-space_23-2148673772.jpg') no-repeat center center/cover; background-attachment: fixed; min-height: 100vh; color: #fff;">
+<div style="background: url('https://tse2.mm.bing.net/th/id/OIP.0iarJstj-emHi_kreOEv7AHaEo?rs=1&pid=ImgDetMain&o=7&rm=3') no-repeat center center/cover; background-attachment: fixed; min-height: 100vh; color: #fff;">
 
     <!-- Hero Section -->
    <section class="hero-section text-center d-flex align-items-center justify-content-center" 
@@ -22,17 +22,31 @@
 
 
     <!-- About Section -->
-    <section id="about" class="section py-5" style="background: rgba(0,0,0,0.7);">
-        <div class="container text-center">
-            <h2 class="section-title">About Us</h2>
-            <p class="mt-3">{{ $portfolio['bio'] }}</p>
+<section id="about" class="section py-5" style="background: rgba(0,0,0,0.7);">
+    <div class="container">
+        <h2 class="section-title text-center">About Us</h2>
+        <div class="row align-items-center mt-4">
+            <!-- Image Column -->
+            <div class="col-md-5 text-center mb-4 mb-md-0">
+            <img src="https://grc.edu.ph/wp-content/uploads/2025/08/Graduation-2025-Ms-Heidi-1024x577.jpeg" alt="GLOBAL RECIPROCAL COLLEGES" class="img-fluid rounded">
+            <img src="https://grc.edu.ph/wp-content/uploads/2024/05/FB_IMG_1714789198276-1024x683.jpg" alt="GLOBAL RECIPROCAL COLLEGES" class="img-fluid rounded">
+             <img src="https://grc.edu.ph/wp-content/uploads/2024/05/418726168_742433734584369_3751672870079643009_n-1024x576.jpg" alt="GLOBAL RECIPROCAL COLLEGES" class="img-fluid rounded">
+
+            </div>
+
+            <!-- Bio Text Column -->
+            <div class="col-md-7 text-white">
+                <p>{{ $portfolio['bio'] }}</p>
+            </div>
         </div>
-    </section>
+    </div>
+</section>
+
 
     <!-- Testimonials Section -->
     <section id="testimonial" class="section py-5" style="background: rgba(0,0,0,0.7);">
         <div class="container">
-            <h2 class="section-title text-center mb-5">What Our Customers Say</h2>
+            <h2 class="section-title text-center mb-5">What Our Student Say</h2>
             <div class="row">
                 @foreach($portfolio['testimonials'] as $testimonial)
                     <div class="col-md-6 mb-4">
@@ -49,7 +63,7 @@
     <!-- Contact Section -->
     <section id="contact" class="section py-5" style="background: rgba(0,0,0,0.7);">
         <div class="container text-center">
-            <h2 class="section-title">Get In Touch</h2>
+            <h2 class="section-title">Contact Us</h2>
             <p class="mb-4">Visit us at {{ $portfolio['location'] }} or contact us below:</p>
             <p><strong>Phone:</strong> {{ $portfolio['phone'] }}</p>
             <p><strong>Email:</strong> {{ $portfolio['email'] }}</p>
@@ -58,3 +72,4 @@
 
 </div>
 @endsection
+
