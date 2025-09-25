@@ -9,8 +9,8 @@ class PortfolioController extends Controller
     public function index()
     {
         $portfolio = [
-            'name' => '',
-            'title' => '',
+            'name' => 'Global Reciprocal Colleges',
+            'title' => 'GSITE',
             'email' => 'globalreciprocalcolleges@gmail.com',
             'phone' => '09708469648',
             'location' => 'Grace Park, Caloocan City',
@@ -48,7 +48,7 @@ DIVERGENT: Know your way Nestled amidst the serene beauty of the Iba Zambales Hi
 
             'testimonials' => [
                 ['quote' => 'Best School in Caloocan ! Love the atmosphere.', 'author' => 'Maria G.'],
-                ['quote' => 'The Professor is always , highly recommend!', 'author' => 'James L.'],
+                ['quote' => 'The Professor is always kind , highly recommend!', 'author' => 'James L.'],
             ],
         ];
 

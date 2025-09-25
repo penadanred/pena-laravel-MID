@@ -1,6 +1,64 @@
+/* General Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
+body {
+  font-family: 'Merriweather', serif;
+  background-color: #121212;
+  color: #f4f1ea;
+  line-height: 1.6;
+  min-height: 100vh;
+}
 
+/* Container */
+.container {
+  max-width: 1140px;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+}
 
+/* Header Section */
+.header-section {
+  background-color: #1f1f1f;
+  color: #d4af37;
+  padding: 3rem 2rem;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+}
+
+/* Header Text */
+.header-text {
+  flex: 1 1 300px;
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1.1;
+  font-family: 'Playfair Display', serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* Leaf-shaped image cutout */
+.leaf-image {
+  width: 200px;
+  height: 200px;
+  background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80');
+  background-size: cover;
+  background-position: center;
+  clip-path: polygon(
+    50% 0%, 61% 35%, 98% 35%, 68% 57%,
+    79% 91%, 50% 70%, 21% 91%, 32% 57%,
+    2% 35%, 39% 35%
+  );
+  filter: drop-shadow(0 0 4px rgba(212, 175, 55, 0.7));
+}
 
 /* Search Bar */
 .search-bar {
